@@ -1,0 +1,12 @@
+docker build -f Dockerfile -t codingsoldier/eureka-server:latest .
+docker tag  codingsoldier/eureka-server:latest localhost:32000/codingsoldier/eureka-server:latest
+docker push localhost:32000/codingsoldier/eureka-server:latest
+docker build -f Dockerfile -t codingsoldier/app001:latest .
+docker tag  codingsoldier/app001:latest localhost:32000/codingsoldier/app001:latest
+docker push localhost:32000/codingsoldier/app001:latest
+docker build -f Dockerfile -t codingsoldier/app002:latest .
+docker tag  codingsoldier/app002:latest localhost:32000/codingsoldier/app002:latest
+docker push localhost:32000/codingsoldier/app002:latest
+docker build -f Dockerfile -t codingsoldier/api-gateway:latest .
+docker tag  codingsoldier/api-gateway:latest localhost:32000/codingsoldier/api-gateway:latest
+docker push localhost:32000/codingsoldier/api-gateway:latest

@@ -1,0 +1,17 @@
+#新建DockerFile、entrypoint.sh
+chmod +x entrypoint.sh
+
+# 打镜像
+docker build -t codingsoldier/XXX:latest .
+
+#部署
+kubectl apply -f XXX.yaml
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,89 @@
+#zuul:  
+##  prefix: /v1
+#  routes:
+#    ribbon:
+#      path: /ribbon/**
+#      serviceId: demo-cloud-service01  # 转发到消费者 /ribbon/
+#    feign:
+#      path: /feign/**
+#      serviceId: demo-cloud-service01  # 转发到消费者 /feign/
+#zuul:
+#  #是否开启重试功能
+#  retryable: true
+#  routes:
+#    #登录服务  
+#    api-service01zuul:
+#      path: /service01zuul/**
+#      serviceId: demo-cloud-service01
+#    #登录服务  
+#    api-service02zuul:
+#      path: /service02zuul/**
+#      serviceId: demo-cloud-service02
+#      
+zuul:  
+#  prefix: /v1
+  routes:
+#    ribbon:
+#      path: /ribbon/**
+#      serviceId: demo-springcloud-service01  # 转发到消费者 /ribbon/
+#    feign:
+#      path: /feign/**
+#      serviceId: demo-springcloud-service01  # 转发到消费者 /feign/
+#    #登录服务  
+#    api-service01zuul:
+#      path: /service01zuul/**
+#      serviceId: demo-springcloud-service01
+#    #登录服务  
+#    api-service02zuul:
+#      path: /service02zuul/**
+#      serviceId: demo-springcloud-service02
+    api-app01:
+      path: /app01/**
+      serviceId: app01
+    api-app02:
+      path: /app02/**
+      serviceId: app02
+  #是否开启重试功能
+  retryable: true
+
+    
+
+#路由超时，即socket超时设置
+ribbon:
+  ReadTimeout: 600000
+  ConnectTimeout: 600000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  
+  
+feign:
+  hystrix:
+    enabled: true
+    
+#spring:
+#  servlet:
+#    multipart:
+#      enabled: true
+#      max-file-size: 512MB
+#      max-request-size: 1024MB
+#      
+##hystrix设置时间
+#hystrix:
+#  command:
+#      default:
+#        execution:
+#          isolation:
+#            thread:
+#              timeoutInMilliseconds: 50000
+
+spring:
+  application:
+    name: demo-cloud-zuul
+    
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      instance-id: ${spring.application.name}:${server.port}
+      defaultZone: http://8.210.212.227:30030/eureka/
