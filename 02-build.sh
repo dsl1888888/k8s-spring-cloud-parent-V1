@@ -39,9 +39,13 @@ docker build -f Dockerfile -t codingsoldier/api-gateway:latest .
 docker tag  codingsoldier/api-gateway:latest localhost:32000/codingsoldier/api-gateway:latest
 docker push localhost:32000/codingsoldier/api-gateway:latest
 
- 
 
-microk8s.kubectl apply  -f /opt/k8s-spring-cloud-parent/app01/docker-k8s/k8s-app01.yaml
-microk8s.kubectl apply  -f /opt/k8s-spring-cloud-parent/app02/docker-k8s/k8s-app02.yaml
-microk8s.kubectl apply  -f /opt/k8s-spring-cloud-parent/demo-springcloud-zuul/docker-k8s/k8s-api-gateway.yaml
+microk8s.kubectl delete -f /opt/k8s-spring-cloud-parent/app01/docker-k8s/k8s.yaml
+microk8s.kubectl delete -f /opt/k8s-spring-cloud-parent/app02/docker-k8s/k8s.yaml
+microk8s.kubectl delete -f /opt/k8s-spring-cloud-parent/demo-springcloud-zuul/docker-k8s/k8s.yaml
+
+
+microk8s.kubectl apply -f /opt/k8s-spring-cloud-parent/app01/docker-k8s/k8s.yaml
+microk8s.kubectl apply -f /opt/k8s-spring-cloud-parent/app02/docker-k8s/k8s.yaml
+microk8s.kubectl apply -f /opt/k8s-spring-cloud-parent/demo-springcloud-zuul/docker-k8s/k8s.yaml
 
