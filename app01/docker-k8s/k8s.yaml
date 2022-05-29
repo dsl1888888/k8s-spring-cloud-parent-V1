@@ -27,8 +27,11 @@ metadata:
 spec:
   selector:
     app: app001
-  ports:
+  # 使用NodePort类型的Service，绑定service的10005端口到宿主机，以便在物理机上调用
+  type: NodePort 
+  ports: 
   - name: http
     port: 10011
     targetPort: 10011
-
+#   暴露端口取值范围是30000-32767
+    nodePort: 30011
